@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SrirachaCountersComponent {
 
+  bottleClicked(){
+    console.log("bottle was clicked");
+  }
 }
