@@ -1,14 +1,10 @@
 .button-container {
     display: flex;
-    // flex-direction: row;
     justify-content: space-between;
-    // align-items: center;
     padding: 10px;
-    // max-width: 400px;
     width: 100%;
     margin: 0 auto;
     background-color: orange;
-    // margin-right: 50vw;
 
     button:not(:last-child) {
       margin-right: 15vw;
