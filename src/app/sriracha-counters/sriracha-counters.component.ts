@@ -28,18 +28,6 @@ export class SrirachaCountersComponent {
     })
   }
 
-  // bottleClicked(amount: number){
-  //   console.log('bottle with value ', amount, ' was clicked');
-    
-  //   this.updateTotal(amount);
-  // }
-
-  // onClick(event: any) {
-  //   const button = event.target as HTMLButtonElement;
-  //   console.log(button.value);
-    
-  // }
-
   onClick(button: any){
     button.count += 1;
     console.log(`${button.count},  ${button.oz}`);
