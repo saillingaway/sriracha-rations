@@ -1,10 +1,11 @@
 <div class="sriracha-counters-container">
     <div class="button-container">
-        <button (click)="bottleClicked(9)" mat-stroked-button color="primary">
-            small
-        </button> 
-        <button (click)="bottleClicked(17)" mat-stroked-button color="primary">medium</button> 
-        <button (click)="bottleClicked(28)" mat-stroked-button color="primary">large</button> 
-        <button (click)="bottleClicked(136)" mat-stroked-button color="primary">colossal</button> 
+        <button 
+            *ngFor="let button of buttons" 
+            (click)="onClick(button)"
+            mat-stroked-button color="primary"
+            >
+        {{button.size}}
+        </button>
     </div>
 </div>
