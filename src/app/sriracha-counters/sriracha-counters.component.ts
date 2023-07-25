@@ -32,13 +32,21 @@ export class SrirachaCountersComponent {
     button.count += 1;
     console.log(`${button.count},  ${button.oz}`);
     let old_total = this.total_oz;
-    this.updateTotal(button.oz);
-
+    this.updateTotal(button);
+    this.displayCurrentBottleCounts();
     console.log(`${old_total} + ${button.oz} = ${this.total_oz}`)
     console.log(`Button ${button.size} clicked. New total: ${this.total_oz}`);
   }
 
-  updateTotal(oz: number){
-    this.total_oz += oz;
+  updateTotal(button: any){
+    this.total_oz += button.oz;
+    this.total_g += button.g;
   }
+
+  displayCurrentBottleCounts(){
+    this.buttons.forEach( (button) => {
+      console.log(button.oz + ' oz: ' + button.count);
+    })
+  }
+
 }
