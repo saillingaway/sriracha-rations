@@ -8,10 +8,10 @@ import { Component } from '@angular/core';
 export class SrirachaCountersComponent {
 
   buttons = [
-    { size: 'small', oz: 9, count: 0},
-    { size: 'medium', oz: 17, count: 0},
-    { size: 'large', oz: 28, count: 0},
-    { size: 'colossal', oz: 136, count: 0},
+    { size: 'small', oz: 9, g: 255, servings: 51, count: 0 },
+    { size: 'medium', oz: 17, g: 481, servings: 96, count: 0 },
+    { size: 'large', oz: 28, g: 793, servings: 158, count: 0 },
+    { size: 'colossal', oz: 136, g: 3859, servings: 771, count: 0 },
   ];
 
   num_small: number = 0;
@@ -20,7 +20,7 @@ export class SrirachaCountersComponent {
   num_colossal: number = 0;
 
   total_oz: number = 0;
-  total_lbs: number = 0;
+  total_g: number = 0;
 
   ngOnInit(){
     this.buttons.forEach( (button) => {
