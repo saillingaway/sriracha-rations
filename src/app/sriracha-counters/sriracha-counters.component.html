@@ -9,6 +9,12 @@
         </button>
     </div>
     <div class="totals-container">
-        <div class="total-display">{{total_oz}} oz ({{total_g}} g) can last you...</div>
+        <div class="total-display">You've got {{total_oz}} oz ({{total_g}} g) of Sriracha.</div>
+    </div>
+    <div class="results-container">
+        <div>
+            <p>{{total_g/5 | number : '1.0-1' }} tsp.s</p>
+            <p>{{total_g/5/3 | number : '1.0-1' }} Tbspn.s</p>
+        </div>
     </div>
 </div>
