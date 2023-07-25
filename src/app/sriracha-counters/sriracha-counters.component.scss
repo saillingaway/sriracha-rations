@@ -28,6 +28,14 @@
     }
   }
 
+.totals-container {
+  .total-display {
+    font-size: 25px;
+    color: #4CAF50;
+  }
+}
+
+
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
   .button-container {

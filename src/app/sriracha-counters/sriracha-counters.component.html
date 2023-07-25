@@ -5,7 +5,10 @@
             (click)="onClick(button)"
             mat-stroked-button color="primary"
             >
-        {{button.size}}
+            {{button.size}} ({{button.oz}} oz)
         </button>
+    </div>
+    <div class="totals-container">
+        <div class="total-display">{{total_oz}} oz ({{total_g}} g) can last you...</div>
     </div>
 </div>
