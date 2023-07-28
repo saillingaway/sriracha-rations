@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MatButtonToggleChange, MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-sriracha-counters',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./sriracha-counters.component.scss']
 })
 export class SrirachaCountersComponent {
+  // 1 tsp sriracha = 5g
+  // 1 Tbpn = 3 tsp
+  // 1 Tbpn sriracha = 15g
 
   buttons = [
     { size: 'small', oz: 9, g: 255, servings: 51, count: 0 },
@@ -13,6 +17,10 @@ export class SrirachaCountersComponent {
     { size: 'large', oz: 28, g: 793, servings: 158, count: 0 },
     { size: 'colossal', oz: 136, g: 3859, servings: 771, count: 0 },
   ];
+
+  selectedUnit: string;
+  selectedTime: string;
+  selectedNumber: number = 1;
 
   num_small: number = 0;
   num_medium: number = 0;
@@ -26,6 +34,8 @@ export class SrirachaCountersComponent {
     this.buttons.forEach( (button) => {
       console.log(`${button.size},  ${button.oz}, ${button.count}`);
     })
+    this.selectedUnit = "tsp";
+    this.selectedTime = "week";
   }
 
   onClick(button: any){
@@ -36,6 +46,14 @@ export class SrirachaCountersComponent {
     this.displayCurrentBottleCounts();
     console.log(`${old_total} + ${button.oz} = ${this.total_oz}`)
     console.log(`Button ${button.size} clicked. New total: ${this.total_oz}`);
+  }
+
+  onUnitChange(event: MatButtonToggleChange) {
+    this.selectedUnit = event.value;
+  }
+
+  onTimeChange(event: MatButtonToggleChange) {
+    this.selectedTime = event.value;
   }
 
   updateTotal(button: any){

@@ -11,10 +11,37 @@
     <div class="totals-container">
         <div class="total-display">You've got {{total_oz}} oz ({{total_g}} g) of Sriracha.</div>
     </div>
+
     <div class="results-container">
-        <div>
-            <p>{{total_g/5 | number : '1.0-1' }} tsp.s</p>
-            <p>{{total_g/5/3 | number : '1.0-1' }} Tbspn.s</p>
+        <div class="inputs-container">
+            <div><h1>If you use 1 </h1></div>
+
+            <mat-button-toggle-group vertical="true" (change)="onUnitChange($event)" value="tsp">
+                <mat-button-toggle value="tsp">
+                    tsp
+                </mat-button-toggle>
+                <mat-button-toggle value="tbspn">
+                    Tbspn
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <div><h1>every</h1></div>
+
+            <mat-button-toggle-group vertical="true" (change)="onTimeChange($event)" value="week">
+                <mat-button-toggle value="day">
+                    day
+                </mat-button-toggle>
+                <mat-button-toggle value="week">
+                    week
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+
+            <div *ngIf="selectedUnit==='tsp'">
+                <h1>it will last {{total_g/5 | number : '1.0-1' }} {{selectedTime}}s</h1>
+            </div>
+            <div *ngIf="selectedUnit==='tbspn'">
+                <h1>it will last {{total_g/5/3 | number : '1.0-1' }} {{selectedTime}}s</h1>
+            </div>
         </div>
     </div>
 </div>
