@@ -20,7 +20,7 @@ export class SrirachaCountersComponent {
 
   selectedUnit: string;
   selectedTime: string;
-  selectedNumber: number = 1;
+  usingUnitPer: number = 1;
 
   num_small: number = 0;
   num_medium: number = 0;
@@ -30,10 +30,14 @@ export class SrirachaCountersComponent {
   total_oz: number = 0;
   total_g: number = 0;
 
+  tsps: number = 0;
+  tbspns: number = 0;
+
   ngOnInit(){
     this.buttons.forEach( (button) => {
       console.log(`${button.size},  ${button.oz}, ${button.count}`);
-    })
+    });
+
     this.selectedUnit = "tsp";
     this.selectedTime = "week";
   }
@@ -43,6 +47,7 @@ export class SrirachaCountersComponent {
     console.log(`${button.count},  ${button.oz}`);
     let old_total = this.total_oz;
     this.updateTotal(button);
+    this.updateRationAmount();
     this.displayCurrentBottleCounts();
     console.log(`${old_total} + ${button.oz} = ${this.total_oz}`)
     console.log(`Button ${button.size} clicked. New total: ${this.total_oz}`);
@@ -59,6 +64,11 @@ export class SrirachaCountersComponent {
   updateTotal(button: any){
     this.total_oz += button.oz;
     this.total_g += button.g;
+  }
+
+  updateRationAmount(){
+    this.tsps = this.total_g/5/this.usingUnitPer;
+    this.tbspns = this.total_g/5/3/this.usingUnitPer;
   }
 
   displayCurrentBottleCounts(){

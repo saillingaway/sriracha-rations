@@ -8,6 +8,13 @@
             {{button.size}} ({{button.oz}} oz)
         </button>
     </div>
+
+    <!-- <div class="counter-display-container">
+        <div class="count" *ngFor="let button of buttons">
+            <p>{{button.count}}</p>
+        </div>
+    </div> -->
+
     <div class="totals-container">
         <div class="total-display">You've got {{total_oz}} oz ({{total_g}} g) of Sriracha.</div>
     </div>
@@ -37,10 +44,10 @@
             </mat-button-toggle-group>
 
             <div *ngIf="selectedUnit==='tsp'">
-                <h1>it will last {{total_g/5 | number : '1.0-1' }} {{selectedTime}}s</h1>
+                <h1>it will last {{tsps | number : '1.0-1' }} {{selectedTime}}s</h1>
             </div>
             <div *ngIf="selectedUnit==='tbspn'">
-                <h1>it will last {{total_g/5/3 | number : '1.0-1' }} {{selectedTime}}s</h1>
+                <h1>it will last {{tbspns | number : '1.0-1' }} {{selectedTime}}s</h1>
             </div>
         </div>
     </div>
