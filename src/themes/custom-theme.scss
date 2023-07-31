@@ -33,18 +33,18 @@ $sriracha-rations-theme: mat.define-light-theme((
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($sriracha-rations-theme);
+// @include mat.all-component-themes($sriracha-rations-theme);
 
 
 // MY CUSTOM THEMES
 // Extract the color palettes from the configuration object.
 // $color-config: mat.define-palette();
 
-$fire-primary: mat.define-palette(mat.$red-palette, 700); // Dark Red
-$fire-accent:  mat.define-palette(mat.$yellow-palette, 400); // Yellow
-$fire-warn:    mat.define-palette(mat.$orange-palette); // Orange
+$fire-primary: mat.define-palette(mat.$green-palette, 500); // light cool green
+$fire-accent:  mat.define-palette(mat.$deep-orange-palette, 400); // 
+$fire-warn:    mat.define-palette(mat.$light-green-palette, A700); // 
 
-$fire-theme: mat.define-dark-theme((
+$fire-theme: mat.define-light-theme((
   color: (
     primary: $fire-primary,
     accent: $fire-accent,
@@ -52,8 +52,7 @@ $fire-theme: mat.define-dark-theme((
   )
 ));
 
-
-
+ 
 $sauce-primary: mat.define-palette(mat.$brown-palette, 800); // Dark Brown
 $sauce-accent:  mat.define-palette(mat.$orange-palette, 700); // Bright Orange
 $sauce-warn:    mat.define-palette(mat.$brown-palette, 400); // Light Brown
@@ -68,7 +67,7 @@ $sauce-theme: mat.define-light-theme((
 // Apply the themes to components
 // @include mat.all-component-themes($sriracha-rations-theme);
 // @include mat.all-component-themes($sauce-theme);
-// @include mat.all-component-themes($fire-theme);
+@include mat.all-component-themes($fire-theme);
 
 
 
