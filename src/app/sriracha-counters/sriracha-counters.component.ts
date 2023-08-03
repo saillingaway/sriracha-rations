@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import {MatButtonToggleChange, MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleChange, MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-sriracha-counters',
@@ -32,6 +35,9 @@ export class SrirachaCountersComponent {
 
   tsps: number = 0;
   tbspns: number = 0;
+
+  add = true;
+  sub = true;
 
   ngOnInit(){
     this.buttons.forEach( (button) => {
@@ -74,7 +80,7 @@ export class SrirachaCountersComponent {
   displayCurrentBottleCounts(){
     this.buttons.forEach( (button) => {
       console.log(button.oz + ' oz: ' + button.count);
-    })
+    });
   }
 
 }

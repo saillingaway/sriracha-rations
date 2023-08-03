@@ -13,17 +13,42 @@
 
 .button-container {
     display: flex;
+    // flex-direction: row;
     justify-content: space-between;
     padding: 50px;
     width: 100%;
     // margin: 0 auto;
     // border: 3px solid orange;
 
-    button {
-      margin-right: 3vw;
-      margin-left: 3vw;
+    .button-group {
+      border: 2px solid greenyellow;
+      display: flex;
+      align-items: center;
+      
+    }
 
+    button:not(:last-child):not(:first-child) {
+      border: 2px solid pink;
+      display: flex;
+      flex-direction: column;
+      
+      // margin-right: 3vw;
+      // margin-left: 3vw;
+
+      // padding-left: 2.8vw;
+      // padding-right: 2.8vw;
+    }
+
+    button:first-child {
+      border: 1px solid green;
+      margin-left: 3vw;
       padding-left: 2.8vw;
+      
+    }
+
+    button:last-child {
+      border: 1px solid red;
+      margin-right: 3vw;
       padding-right: 2.8vw;
     }
   }

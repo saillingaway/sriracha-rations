@@ -1,19 +1,33 @@
 <div class="sriracha-counters-container">
     <div class="button-container">
-        <button 
-            *ngFor="let button of buttons" 
-            (click)="onClick(button)"
-            mat-stroked-button color="primary"
-            >
-            {{button.size}} ({{button.oz}} oz)
-        </button>
-    </div>
+        <div class="button-group" *ngFor="let button of buttons" >
+            <button mat-icon-button matTooltip="Primary" color="primary" aria-label="Example icon-button with a heart icon">
+                <mat-icon>add</mat-icon>
+            </button>
 
-    <!-- <div class="counter-display-container">
-        <div class="count" *ngFor="let button of buttons">
-            <p>{{button.count}}</p>
-        </div>
-    </div> -->
+            <button 
+                (click)="onClick(button)"
+                mat-stroked-button color="primary"
+                >
+
+                <!-- <button mat-icon-button matTooltip="Primary" color="primary" aria-label="Example icon-button with a heart icon">
+                    <mat-icon>add</mat-icon>
+                </button> -->
+
+                <!-- <mat-icon-button *ngIf="sub" class="fade-in-out">remove</mat-icon> -->
+                    {{button.size}} ({{button.oz}} oz)
+                <!-- <mat-icon-button *ngIf="add" class="fade-in-out">add</mat-icon> -->
+                
+                <!-- <button mat-icon-button matTooltip="Primary" color="primary" aria-label="Example icon-button with a heart icon">
+                    <mat-icon>remove</mat-icon>
+                </button> -->
+            </button>
+
+            <button mat-icon-button matTooltip="Primary" color="primary" aria-label="Example icon-button with a heart icon">
+                <mat-icon>remove</mat-icon>
+            </button>
+        </div>       
+    </div>
 
     <div class="totals-container">
         <div class="total-display">You've got {{total_oz}} oz ({{total_g}} g) of Sriracha.</div>
