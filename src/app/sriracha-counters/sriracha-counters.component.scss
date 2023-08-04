@@ -21,14 +21,23 @@
     // border: 3px solid orange;
 
     .button-group {
-      border: 2px solid greenyellow;
+      // border: 2px solid greenyellow;
       display: flex;
       align-items: center;
       
+      // .fade-in-out {
+      //   animation: fadeInOut 1s linear infinite;
+      // }
+
+      // @keyframes fadeInOut {
+      //   0% { opacity: 1; }
+      //   50% { opacity: 0; }
+      //   100% { opacity: 1; }
+      // }
     }
 
     button:not(:last-child):not(:first-child) {
-      border: 2px solid pink;
+      // border: 2px solid pink;
       display: flex;
       flex-direction: column;
       
@@ -40,14 +49,13 @@
     }
 
     button:first-child {
-      border: 1px solid green;
+      // border: 1px solid green;
       margin-left: 3vw;
-      padding-left: 2.8vw;
-      
+      // padding-left: 2.8vw;
     }
 
     button:last-child {
-      border: 1px solid red;
+      // border: 1px solid red;
       margin-right: 3vw;
       padding-right: 2.8vw;
     }

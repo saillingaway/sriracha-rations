@@ -15,10 +15,10 @@ export class SrirachaCountersComponent {
   // 1 Tbpn sriracha = 15g
 
   buttons = [
-    { size: 'small', oz: 9, g: 255, servings: 51, count: 0 },
-    { size: 'medium', oz: 17, g: 481, servings: 96, count: 0 },
-    { size: 'large', oz: 28, g: 793, servings: 158, count: 0 },
-    { size: 'colossal', oz: 136, g: 3859, servings: 771, count: 0 },
+    { size: 'small', oz: 9, g: 255, servings: 51, count: 0, leftIconOpacity: 0, rightIconOpacity: 0 },
+    { size: 'medium', oz: 17, g: 481, servings: 96, count: 0, leftIconOpacity: 0, rightIconOpacity: 0  },
+    { size: 'large', oz: 28, g: 793, servings: 158, count: 0, leftIconOpacity: 0, rightIconOpacity: 0  },
+    { size: 'colossal', oz: 136, g: 3859, servings: 771, count: 0, leftIconOpacity: 0, rightIconOpacity: 0  },
   ];
 
   selectedUnit: string;
@@ -36,8 +36,8 @@ export class SrirachaCountersComponent {
   tsps: number = 0;
   tbspns: number = 0;
 
-  add = true;
-  sub = true;
+  leftIconOpacity = 0;
+  rightIconOpacity = 0;
 
   ngOnInit(){
     this.buttons.forEach( (button) => {
@@ -48,15 +48,46 @@ export class SrirachaCountersComponent {
     this.selectedTime = "week";
   }
 
-  onClick(button: any){
-    button.count += 1;
-    console.log(`${button.count},  ${button.oz}`);
-    let old_total = this.total_oz;
+  onClick(event: MouseEvent, button: any){
+    let targetElement = event.target as HTMLElement;
+    let relativeXPosition = event.clientX - targetElement.getBoundingClientRect().left;
+    let middlePosition = targetElement.offsetWidth / 2;
+
+    if (relativeXPosition < middlePosition) {
+      console.log('remove sriracha');
+      button.count -= 1;
+      this.updateTotal(button);
+    } else {
+      console.log('add sriracha');
+      button.count += 1;
+      this.updateTotal(button);
+    }
+
+
     this.updateTotal(button);
     this.updateRationAmount();
     this.displayCurrentBottleCounts();
-    console.log(`${old_total} + ${button.oz} = ${this.total_oz}`)
-    console.log(`Button ${button.size} clicked. New total: ${this.total_oz}`);
+  }
+
+  changeIconVisibility(event: MouseEvent, button: any){
+    let targetElement = event.target as HTMLElement;
+    let relativeXPosition = event.clientX - targetElement.getBoundingClientRect().left;
+    let normalizedXPosition = relativeXPosition / targetElement.offsetWidth; // This will be a value between 0 and 1
+
+    if (normalizedXPosition < 0.5) {
+      button.leftIconOpacity = 1 - (normalizedXPosition * 2); // Multiplied by 2 to ensure the value stays between 0 and 1
+      button.rightIconOpacity = 0;
+    } else {
+      button.leftIconOpacity = 0;
+      button.rightIconOpacity = (normalizedXPosition - 0.5) * 2; // Subtract 0.5 to start at 0, then multiply by 2 to ensure the value stays between 0 and 1
+    }
+  }
+
+  hideIcons(){
+    this.buttons.forEach((button) => {
+      button.leftIconOpacity = 0;
+      button.rightIconOpacity = 0;
+    });
   }
 
   onUnitChange(event: MatButtonToggleChange) {

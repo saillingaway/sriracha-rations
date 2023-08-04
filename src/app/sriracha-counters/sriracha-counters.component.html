@@ -1,31 +1,23 @@
 <div class="sriracha-counters-container">
     <div class="button-container">
         <div class="button-group" *ngFor="let button of buttons" >
-            <button mat-icon-button matTooltip="Primary" color="primary" aria-label="Example icon-button with a heart icon">
-                <mat-icon>add</mat-icon>
-            </button>
+            <mat-icon [style.opacity]="button.leftIconOpacity" class="fade-in-out">remove</mat-icon>
 
-            <button 
-                (click)="onClick(button)"
+                <button 
+                (click)="onClick($event, button)"
+                (mousemove)="changeIconVisibility($event, button)"
+                (mouseleave)="hideIcons()"
                 mat-stroked-button color="primary"
                 >
-
-                <!-- <button mat-icon-button matTooltip="Primary" color="primary" aria-label="Example icon-button with a heart icon">
-                    <mat-icon>add</mat-icon>
-                </button> -->
-
-                <!-- <mat-icon-button *ngIf="sub" class="fade-in-out">remove</mat-icon> -->
                     {{button.size}} ({{button.oz}} oz)
-                <!-- <mat-icon-button *ngIf="add" class="fade-in-out">add</mat-icon> -->
-                
-                <!-- <button mat-icon-button matTooltip="Primary" color="primary" aria-label="Example icon-button with a heart icon">
-                    <mat-icon>remove</mat-icon>
-                </button> -->
-            </button>
+                </button>
 
-            <button mat-icon-button matTooltip="Primary" color="primary" aria-label="Example icon-button with a heart icon">
-                <mat-icon>remove</mat-icon>
-            </button>
+
+            <mat-icon [style.opacity]="button.rightIconOpacity" class="fade-in-out">add</mat-icon>
+
+            <!-- <button mat-icon-button matTooltip="Primary" color="primary" aria-label="Example icon-button with a heart icon">
+                <mat-icon>add</mat-icon>
+            </button> -->
         </div>       
     </div>
 
